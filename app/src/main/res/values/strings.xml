@@ -4,4 +4,8 @@
     <string name="start_btn">Start</string>
     <string name="stop_btn">Stop</string>
     <string name="reset_btn">Reset</string>
+    <string name="resume_btn">Resume</string>
+    <string name="pause_btn">Pause</string>
+    <string name="empty_text"> </string>
+
 </resources>
