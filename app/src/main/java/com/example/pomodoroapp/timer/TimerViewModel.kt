@@ -140,7 +140,7 @@ class TimerViewModel : ViewModel() {
         _startTimerStatus.value = false
     }
 
-    fun timerCancel() {
+    private fun timerCancel() {
         myTimer.cancel()
     }
 
