@@ -32,12 +32,12 @@ class TimerFragment : Fragment() {
             it?.let {
                 if (it) {
                     binding.btnStart.text = getString(R.string.resume_btn)
-                    binding.btnStop.isEnabled = true
-                    binding.btnStop.visibility = View.VISIBLE
+                    binding.btnSkip.isEnabled = true
+                    binding.btnSkip.visibility = View.VISIBLE
                 } else {
                     binding.btnStart.text = getString(R.string.start_btn)
-                    binding.btnStop.isEnabled = false
-                    binding.btnStop.visibility = View.INVISIBLE
+                    binding.btnSkip.isEnabled = false
+                    binding.btnSkip.visibility = View.INVISIBLE
                 }
             }
         })

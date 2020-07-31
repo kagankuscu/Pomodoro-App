@@ -40,18 +40,18 @@
             android:onClick="@{() -> timerViewModel.toggleStartAndStop()}"
             android:text="@string/start_btn"
             android:textSize="24sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/btnStop"
-            app:layout_constraintEnd_toStartOf="@+id/btnStop"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnSkip"
+            app:layout_constraintEnd_toStartOf="@+id/btnSkip"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/btnStop"
+            android:id="@+id/btnSkip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:background="@drawable/button_shape"
             android:enabled="false"
-            android:onClick="@{() -> timerViewModel.toggleStartAndStop()}"
+            android:onClick="@{() -> timerViewModel.onSkipTimer()}"
             android:text="@string/skip_btn"
             android:textSize="24sp"
             android:visibility="invisible"
@@ -70,10 +70,10 @@
             android:onClick="@{() -> timerViewModel.onResetTimer()}"
             android:text="@string/reset_btn"
             android:textSize="24sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/btnStop"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnSkip"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/btnStop" />
+            app:layout_constraintStart_toEndOf="@+id/btnSkip" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

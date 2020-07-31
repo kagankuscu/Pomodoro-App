@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 class TimerViewModel : ViewModel() {
     companion object {
         private const val DONE = 0L
-        private const val SHORT_BREAK = 5000L
+        private const val SHORT_BREAK = 300000L
         private const val LONG_BREAK = 15000L
 
         //        private const val WORK = 1500000L
@@ -19,6 +19,8 @@ class TimerViewModel : ViewModel() {
 
         private var oneMin = 60000L
     }
+
+    private val pomodoroArr = arrayOf(WORK, SHORT_BREAK, LONG_BREAK)
 
     private val _startTimerStatus = MutableLiveData<Boolean>()
 
@@ -99,6 +101,7 @@ class TimerViewModel : ViewModel() {
     }
 
     private fun onStartTimer() {
+        myTimer = createTimerObject(WORK)
         myTimer.start()
         Log.i("TimerViewModel", "timer started")
         timerStarted()
@@ -123,13 +126,24 @@ class TimerViewModel : ViewModel() {
         myTimer.start()
     }
 
+    fun onSkipTimer() {
+        Log.i("Timer", "Skip timer")
+//        onResetTimer()
+
+        timerCancel()
+        oneMinReset()
+
+        myTimer = createTimerObject(SHORT_BREAK)
+        myTimer.start()
+    }
+
     fun onResetTimer() {
         Log.i("TimerViewModel", "timer reset")
 
         timerCancel()
         resetTimer()
-        oneMin = 60000L
         timerCompleted()
+        oneMinReset()
     }
 
     private fun timerStarted() {
@@ -148,7 +162,7 @@ class TimerViewModel : ViewModel() {
         oneMin -= 1000
 
         if (oneMin < 0L) {
-            oneMin = 59000L
+            oneMin = 60000L
         }
 
         return oneMin / 1000
@@ -160,5 +174,9 @@ class TimerViewModel : ViewModel() {
 
     fun resetTimerCompleted() {
         _resetTimer.value = false
+    }
+
+    private fun oneMinReset() {
+        oneMin = 60000L
     }
 }
