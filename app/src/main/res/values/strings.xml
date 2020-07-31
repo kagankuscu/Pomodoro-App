@@ -6,6 +6,6 @@
     <string name="reset_btn">Reset</string>
     <string name="resume_btn">Resume</string>
     <string name="pause_btn">Pause</string>
-    <string name="empty_text"> </string>
+    <string name="skip_btn">Skip</string>
 
 </resources>

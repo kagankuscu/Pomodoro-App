@@ -52,22 +52,22 @@
             android:background="@drawable/button_shape"
             android:enabled="false"
             android:onClick="@{() -> timerViewModel.toggleStartAndStop()}"
-            android:text="@string/empty_text"
+            android:text="@string/skip_btn"
             android:textSize="24sp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnReset"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btnStart"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="1.0"
-            android:visibility="invisible"/>
+            app:layout_constraintTop_toBottomOf="@+id/timerText"
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/btnReset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_shape"
-            android:onClick="@{() -> timerViewModel.onReset()}"
+            android:onClick="@{() -> timerViewModel.onResetTimer()}"
             android:text="@string/reset_btn"
             android:textSize="24sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/btnStop"
