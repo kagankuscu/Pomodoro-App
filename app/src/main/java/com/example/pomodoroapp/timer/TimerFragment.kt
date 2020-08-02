@@ -34,6 +34,7 @@ class TimerFragment : Fragment() {
                     binding.btnStart.text = getString(R.string.pause_btn)
                     binding.btnSkip.visibility = View.VISIBLE
                     binding.btnReset.isEnabled = true
+                    binding.infoText.visibility = View.VISIBLE
                 } else {
                     binding.btnStart.text = getString(R.string.start_btn)
                     binding.btnSkip.visibility = View.INVISIBLE
@@ -64,7 +65,14 @@ class TimerFragment : Fragment() {
                     timerViewModel.resetTimerCompleted()
                 } else {
                     binding.btnReset.isEnabled = false
+                    // TODO when app turn landscape reset button is disable. fix it.
                 }
+            }
+        })
+
+        timerViewModel.infoText.observe(viewLifecycleOwner, Observer {info ->
+            info?.let {
+                binding.infoText.text = info
             }
         })
 
