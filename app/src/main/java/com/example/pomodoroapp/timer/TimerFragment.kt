@@ -31,28 +31,39 @@ class TimerFragment : Fragment() {
         timerViewModel.startTimerStatus.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if (it) {
-                    binding.btnStart.text = getString(R.string.resume_btn)
-                    binding.btnSkip.isEnabled = true
+                    binding.btnStart.text = getString(R.string.pause_btn)
                     binding.btnSkip.visibility = View.VISIBLE
+                    binding.btnReset.isEnabled = true
                 } else {
                     binding.btnStart.text = getString(R.string.start_btn)
-                    binding.btnSkip.isEnabled = false
                     binding.btnSkip.visibility = View.INVISIBLE
                 }
             }
         })
 
-        timerViewModel.timerString.observe(viewLifecycleOwner, Observer {timerText ->
+        timerViewModel.pauseTimerStatus.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (it) {
+                    binding.btnStart.text = getString(R.string.resume_btn)
+                } else {
+                    binding.btnStart.text = getString(R.string.pause_btn)
+                }
+            }
+        })
+
+        timerViewModel.timerString.observe(viewLifecycleOwner, Observer { timerText ->
             timerText?.let {
                 binding.timerText.text = timerText
             }
         })
 
-        timerViewModel.resetTimer.observe(viewLifecycleOwner, Observer {
+        timerViewModel.resetTimerStatus.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if (it) {
                     binding.timerText.text = getString(R.string.timer_0)
                     timerViewModel.resetTimerCompleted()
+                } else {
+                    binding.btnReset.isEnabled = false
                 }
             }
         })

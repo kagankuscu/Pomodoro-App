@@ -50,7 +50,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:background="@drawable/button_shape"
-            android:enabled="false"
             android:onClick="@{() -> timerViewModel.onSkipTimer()}"
             android:text="@string/skip_btn"
             android:textSize="24sp"

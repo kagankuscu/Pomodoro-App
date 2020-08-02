@@ -1,10 +1,10 @@
 package com.example.pomodoroapp.timer
 
 import android.os.CountDownTimer
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import timber.log.Timber
 
 class TimerViewModel : ViewModel() {
     companion object {
@@ -13,7 +13,7 @@ class TimerViewModel : ViewModel() {
         private const val LONG_BREAK = 15000L
 
         //        private const val WORK = 1500000L
-        private const val WORK = 120000L
+        private const val WORK = 60000L
 
         private const val SECOND = 1000L
 
@@ -34,23 +34,68 @@ class TimerViewModel : ViewModel() {
 
     private var myTimer: CountDownTimer
 
-    private val _resetTimer = MutableLiveData<Boolean>()
+    private val _resetTimerStatus = MutableLiveData<Boolean>()
 
-    val resetTimer: LiveData<Boolean>
-        get() = _resetTimer
+    val resetTimerStatus: LiveData<Boolean>
+        get() = _resetTimerStatus
 
     private var onTickMilliSecond = 0L
 
     private val _pauseTimerStatus = MutableLiveData<Boolean>()
 
-    private val pauseTimerStatus: LiveData<Boolean>
+    val pauseTimerStatus: LiveData<Boolean>
         get() = _pauseTimerStatus
 
     init {
         myTimer = createTimerObject(WORK)
         _startTimerStatus.value = false
-        _pauseTimerStatus.value = false
+        _resetTimerStatus.value = false
     }
+
+    fun toggleStartAndStop() {
+        if (checkStartTimerStatus()) {
+            onStartTimer()
+        } else {
+
+            if (checkPauseTimerStatus()) {
+                onPauseTimer()
+                pauseTimer()
+            } else {
+                onResumeTimer()
+                pauseTimerCompleted()
+            }
+        }
+    }
+
+    fun onSkipTimer() {
+        Timber.i("Skip timer")
+
+        timerCancel()
+        oneMinReset()
+        pauseTimerCompleted()
+
+        myTimer = createTimerObject(WORK)
+        // TODO() myTimer = createTimerObject(SHORT_BREAK) should change because
+        // TODO() every click must change the time depends on the next time.
+
+        myTimer.start()
+    }
+
+    fun onResetTimer() {
+        Timber.i("timer reset")
+
+        timerCancel()
+        resetTimer()
+        timerCompleted()
+        oneMinReset()
+        pauseTimerNull()
+    }
+
+    fun resetTimerCompleted() {
+        _resetTimerStatus.value = false
+    }
+
+    var pomodoro = 0
 
     private fun createTimerObject(workTime: Long): CountDownTimer {
 
@@ -59,35 +104,27 @@ class TimerViewModel : ViewModel() {
             SECOND
         ) {
             override fun onFinish() {
-                onResetTimer()
+                Timber.i("Timer Finished. ${pomodoro++}")
+                when (workTime) {
+                    WORK -> {
+                        Timber.i("NEXT WORK")
+                        onSkipTimer()
+                    }
+                    SHORT_BREAK -> Timber.i("NEXT SHORT BREAK")
+                }
             }
 
             override fun onTick(milliSecond: Long) {
                 val o = countDownOneMin()
-                Log.i("Timer", "second ${milliSecond / 60000} : $o")
+                Timber.i("second ${milliSecond / 60000} : $o")
                 _timerString.value = "${milliSecond / 60000}:${o}"
                 onTickMilliSecond = milliSecond
             }
         }
     }
 
-    fun toggleStartAndStop() {
-        if (checkStartTimerStatus()) {
-            onStartTimer()
-        } else {
-
-            if (!checkPauseTimerStatus()) {
-                onResumeTimer()
-                pauseTimerCompleted()
-            } else {
-                onPauseTimer()
-                pauseTimer()
-            }
-        }
-    }
-
     private fun checkPauseTimerStatus(): Boolean {
-        if (_pauseTimerStatus.value == false) {
+        if (_pauseTimerStatus.value == false || _pauseTimerStatus.value == null) {
             return true
         }
         return false
@@ -101,14 +138,13 @@ class TimerViewModel : ViewModel() {
     }
 
     private fun onStartTimer() {
-        myTimer = createTimerObject(WORK)
+        myTimer = createTimerObject(pomodoroArr[0])
         myTimer.start()
-        Log.i("TimerViewModel", "timer started")
+        Timber.i("timer started")
         timerStarted()
     }
 
     private fun onPauseTimer() {
-        Log.i("TimerViewModel", "timer pause")
         timerCancel()
     }
 
@@ -120,30 +156,13 @@ class TimerViewModel : ViewModel() {
         _pauseTimerStatus.value = false
     }
 
+    private fun pauseTimerNull() {
+        _pauseTimerStatus.value = null
+    }
+
     private fun onResumeTimer() {
-        Log.i("TimerViewModel", "timer resume timer")
         myTimer = createTimerObject(onTickMilliSecond)
         myTimer.start()
-    }
-
-    fun onSkipTimer() {
-        Log.i("Timer", "Skip timer")
-//        onResetTimer()
-
-        timerCancel()
-        oneMinReset()
-
-        myTimer = createTimerObject(SHORT_BREAK)
-        myTimer.start()
-    }
-
-    fun onResetTimer() {
-        Log.i("TimerViewModel", "timer reset")
-
-        timerCancel()
-        resetTimer()
-        timerCompleted()
-        oneMinReset()
     }
 
     private fun timerStarted() {
@@ -169,11 +188,7 @@ class TimerViewModel : ViewModel() {
     }
 
     private fun resetTimer() {
-        _resetTimer.value = true
-    }
-
-    fun resetTimerCompleted() {
-        _resetTimer.value = false
+        _resetTimerStatus.value = true
     }
 
     private fun oneMinReset() {
