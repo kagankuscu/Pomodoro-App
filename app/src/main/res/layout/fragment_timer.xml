@@ -17,20 +17,38 @@
         android:background="@color/background"
         tools:context=".MainActivity">
 
+
         <TextView
             android:id="@+id/timerText"
-            android:layout_width="0dp"
-            android:layout_height="130dp"
-            android:gravity="center"
+            style="@style/textViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             android:text="@string/timer_0"
             android:textColor="@android:color/background_dark"
             app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/infoText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.334" />
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/infoText"
+            style="@style/textViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="32dp"
+            android:text="@string/work"
+            android:textColor="@android:color/darker_gray"
+            android:visibility="invisible"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/btnStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.742" />
 
         <Button
             android:id="@+id/btnStart"
