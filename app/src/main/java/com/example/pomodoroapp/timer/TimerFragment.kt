@@ -62,10 +62,8 @@ class TimerFragment : Fragment() {
             it?.let {
                 if (it) {
                     binding.timerText.text = getString(R.string.timer_0)
-                    timerViewModel.resetTimerCompleted()
-                } else {
                     binding.btnReset.isEnabled = false
-                    // TODO when app turn landscape reset button is disable. fix it.
+                    timerViewModel.resetTimerCompleted()
                 }
             }
         })
