@@ -84,6 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_shape"
+            android:enabled="false"
             android:onClick="@{() -> timerViewModel.onResetTimer()}"
             android:text="@string/reset_btn"
             android:textSize="24sp"
