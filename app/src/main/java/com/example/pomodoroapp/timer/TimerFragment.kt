@@ -38,6 +38,7 @@ class TimerFragment : Fragment() {
                 } else {
                     binding.btnStart.text = getString(R.string.start_btn)
                     binding.btnSkip.visibility = View.INVISIBLE
+                    binding.infoText.visibility = View.INVISIBLE
                 }
             }
         })
