@@ -62,6 +62,8 @@ class TimerViewModel : ViewModel() {
         countDownTimer = createTimerObject(WORK)
         _startTimerStatus.value = false
         _resetTimerStatus.value = false
+
+        _timerString.value = "00:00"
     }
 
     fun toggleStartAndStop() {
