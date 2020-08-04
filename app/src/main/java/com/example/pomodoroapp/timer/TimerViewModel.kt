@@ -98,10 +98,6 @@ class TimerViewModel : ViewModel() {
         pomodoro = 0
     }
 
-    fun resetTimerCompleted() {
-        _resetTimerStatus.value = false
-    }
-
     private fun createTimerObject(workTime: Long): CountDownTimer {
 
         return object : CountDownTimer(
@@ -119,20 +115,6 @@ class TimerViewModel : ViewModel() {
         }
     }
 
-    private fun checkPauseTimerStatus(): Boolean {
-        if (_pauseTimerStatus.value == false || _pauseTimerStatus.value == null) {
-            return true
-        }
-        return false
-    }
-
-    private fun checkStartTimerStatus(): Boolean {
-        if (_startTimerStatus.value == false) {
-            return true
-        }
-        return false
-    }
-
     private fun onStartTimer() {
         nextTimer()
         setTimer()
@@ -140,46 +122,6 @@ class TimerViewModel : ViewModel() {
         timerStarted()
     }
 
-    private fun onPauseTimer() {
-        timerCancel()
-    }
-
-    private fun pauseTimer() {
-        _pauseTimerStatus.value = true
-    }
-
-    private fun pauseTimerCompleted() {
-        _pauseTimerStatus.value = false
-    }
-
-    private fun pauseTimerNull() {
-        _pauseTimerStatus.value = null
-    }
-
-    private fun onResumeTimer() {
-        countDownTimer = createTimerObject(onTickMilliSecond)
-        countDownTimer.start()
-    }
-
-    private fun timerStarted() {
-        _startTimerStatus.value = true
-    }
-
-    private fun timerCompleted() {
-        _startTimerStatus.value = false
-    }
-
-    private fun timerCancel() {
-        countDownTimer.cancel()
-    }
-
-    private fun resetTimer() {
-        _resetTimerStatus.value = true
-    }
-
-    private fun setTimer() {
-        countDownTimer.start()
-    }
 
     private fun updateText(milliSecond: Long) {
         val minutes = milliSecond / MINUTE
@@ -208,5 +150,64 @@ class TimerViewModel : ViewModel() {
         }
 
         pomodoro++
+    }
+
+    private fun onResumeTimer() {
+        countDownTimer = createTimerObject(onTickMilliSecond)
+        countDownTimer.start()
+    }
+
+    private fun checkPauseTimerStatus(): Boolean {
+        if (_pauseTimerStatus.value == false || _pauseTimerStatus.value == null) {
+            return true
+        }
+        return false
+    }
+
+    private fun checkStartTimerStatus(): Boolean {
+        if (_startTimerStatus.value == false) {
+            return true
+        }
+        return false
+    }
+
+    private fun onPauseTimer() {
+        timerCancel()
+    }
+
+    private fun pauseTimer() {
+        _pauseTimerStatus.value = true
+    }
+
+    private fun pauseTimerCompleted() {
+        _pauseTimerStatus.value = false
+    }
+
+    private fun pauseTimerNull() {
+        _pauseTimerStatus.value = null
+    }
+
+    private fun timerStarted() {
+        _startTimerStatus.value = true
+    }
+
+    private fun timerCompleted() {
+        _startTimerStatus.value = false
+    }
+
+    private fun timerCancel() {
+        countDownTimer.cancel()
+    }
+
+    private fun resetTimer() {
+        _resetTimerStatus.value = true
+    }
+
+    fun resetTimerCompleted() {
+        _resetTimerStatus.value = false
+    }
+
+    private fun setTimer() {
+        countDownTimer.start()
     }
 }
