@@ -62,7 +62,6 @@ class TimerFragment : Fragment() {
         timerViewModel.resetTimerStatus.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if (it) {
-                    binding.timerText.text = getString(R.string.timer_0)
                     binding.btnReset.isEnabled = false
                     timerViewModel.resetTimerCompleted()
                 }

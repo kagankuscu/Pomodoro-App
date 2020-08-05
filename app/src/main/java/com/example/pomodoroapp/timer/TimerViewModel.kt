@@ -58,10 +58,14 @@ class TimerViewModel : ViewModel() {
     val infoText: LiveData<String>
         get() = _infoText
 
+    private val timerZero = "00:00"
+
     init {
         countDownTimer = createTimerObject(WORK)
         _startTimerStatus.value = false
         _resetTimerStatus.value = false
+
+        _timerString.value = timerZero
     }
 
     fun toggleStartAndStop() {
@@ -95,6 +99,7 @@ class TimerViewModel : ViewModel() {
         resetTimer()
         timerCompleted()
         pauseTimerNull()
+        resetTextString()
         pomodoro = 0
     }
 
@@ -209,5 +214,9 @@ class TimerViewModel : ViewModel() {
 
     private fun setTimer() {
         countDownTimer.start()
+    }
+
+    private fun resetTextString() {
+        _timerString.value = timerZero
     }
 }
