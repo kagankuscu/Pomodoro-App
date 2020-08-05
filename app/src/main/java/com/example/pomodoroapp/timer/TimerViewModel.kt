@@ -1,5 +1,6 @@
 package com.example.pomodoroapp.timer
 
+import android.os.Build
 import android.os.CountDownTimer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -60,6 +61,11 @@ class TimerViewModel : ViewModel() {
 
     private val timerZero = "00:00"
 
+    private val _vibration = MutableLiveData<Boolean>()
+
+    val vibration: LiveData<Boolean>
+        get() = _vibration
+
     init {
         countDownTimer = createTimerObject(WORK)
         _startTimerStatus.value = false
@@ -111,6 +117,7 @@ class TimerViewModel : ViewModel() {
         ) {
             override fun onFinish() {
                 Timber.i("Timer Finished. $pomodoro")
+                setVibration()
                 nextTimer()
             }
 
@@ -174,6 +181,14 @@ class TimerViewModel : ViewModel() {
             return true
         }
         return false
+    }
+
+    private fun setVibration() {
+        _vibration.value = true
+    }
+
+    fun vibrationCompleted() {
+        _vibration.value = false
     }
 
     private fun onPauseTimer() {

@@ -1,9 +1,13 @@
 package com.example.pomodoroapp.timer
 
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -68,9 +72,22 @@ class TimerFragment : Fragment() {
             }
         })
 
-        timerViewModel.infoText.observe(viewLifecycleOwner, Observer {info ->
+        timerViewModel.infoText.observe(viewLifecycleOwner, Observer { info ->
             info?.let {
                 binding.infoText.text = info
+            }
+        })
+
+        val vibe: Vibrator? = getSystemService(requireContext(), Vibrator::class.java)
+
+        timerViewModel.vibration.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (it) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibe?.vibrate(VibrationEffect.createOneShot(500L, 255))
+                        timerViewModel.vibrationCompleted()
+                    }
+                }
             }
         })
 
