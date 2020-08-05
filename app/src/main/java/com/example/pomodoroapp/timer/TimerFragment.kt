@@ -27,6 +27,7 @@ class TimerFragment : Fragment() {
         )
 
         val timerViewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
+        val vibe: Vibrator? = getSystemService(requireContext(), Vibrator::class.java)
 
         binding.lifecycleOwner = this
 
@@ -77,8 +78,6 @@ class TimerFragment : Fragment() {
                 binding.infoText.text = info
             }
         })
-
-        val vibe: Vibrator? = getSystemService(requireContext(), Vibrator::class.java)
 
         timerViewModel.vibration.observe(viewLifecycleOwner, Observer {
             it?.let {
