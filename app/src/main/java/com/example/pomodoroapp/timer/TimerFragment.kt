@@ -7,6 +7,7 @@ import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -14,6 +15,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.pomodoroapp.R
 import com.example.pomodoroapp.databinding.FragmentTimerBinding
+import com.huawei.hms.ads.AdParam
+import com.huawei.hms.ads.BannerAdSize
+import com.huawei.hms.ads.banner.BannerView
 
 class TimerFragment : Fragment() {
     override fun onCreateView(
@@ -28,6 +32,10 @@ class TimerFragment : Fragment() {
 
         val timerViewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
         val vibe: Vibrator? = getSystemService(requireContext(), Vibrator::class.java)
+
+        // Huawei Ads variable
+        val adParam: AdParam = AdParam.Builder().build()
+        val bannerView: BannerView = BannerView(context)
 
         binding.lifecycleOwner = this
 
@@ -89,6 +97,12 @@ class TimerFragment : Fragment() {
                 }
             }
         })
+
+
+        bannerView.adId = "testw6vs28auh3"
+        bannerView.loadAd(adParam)
+
+        binding.constraintLayout.addView(bannerView)
 
         return binding.root
     }
