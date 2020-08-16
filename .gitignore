@@ -12,3 +12,6 @@
 /captures
 .externalNativeBuild
 .cxx
+*.aab
+*.jar
+*.jks
