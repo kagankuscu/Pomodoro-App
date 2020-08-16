@@ -100,7 +100,8 @@ class TimerFragment : Fragment() {
 
 
         bannerView.adId = "testw6vs28auh3"
-        bannerView.loadAd(adParam)
+        if (Build.MANUFACTURER == "HUAWEI")
+            bannerView.loadAd(adParam)
 
         binding.constraintLayout.addView(bannerView)
 
