@@ -5,6 +5,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/raleway_semibold</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
     </style>
 
     <style name="textViewStyle">
@@ -17,5 +19,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/dancing_script_bold</item>
+        <item name="android:fontFamily">@font/dancing_script_bold</item>
     </style>
 </resources>
