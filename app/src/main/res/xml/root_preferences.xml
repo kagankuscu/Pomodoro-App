@@ -1,34 +1,33 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/general_settings">
+        <SwitchPreference
+            android:defaultValue="false"
+            app:key="mode"
+            app:title="@string/dark_mode" />
+    </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/messages_header">
 
         <EditTextPreference
-            app:key="signature"
-            app:title="@string/signature_title"
+            android:inputType="number"
+            app:key="work_time"
+            app:title="@string/work_time"
             app:useSimpleSummaryProvider="true" />
 
-        <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
+        <EditTextPreference
+            android:inputType="number"
+            app:key="short_break"
+            app:title="@string/short_time"
             app:useSimpleSummaryProvider="true" />
 
-    </PreferenceCategory>
+        <EditTextPreference
+            android:inputType="number"
+            app:key="long_break"
+            app:title="@string/long_time"
+            app:useSimpleSummaryProvider="true" />
 
-    <PreferenceCategory app:title="@string/sync_header">
-
-        <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title" />
-
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
 
     </PreferenceCategory>
 
