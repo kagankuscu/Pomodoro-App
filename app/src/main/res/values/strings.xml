@@ -10,6 +10,11 @@
     <string name="work">Work</string>
     <string name="short_break">Short Break</string>
     <string name="long_break">Long Break</string>
+
+    <!--    Menu -->
+    <string name="about">About</string>
+    <string name="setting">Setting</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Preference Titles -->

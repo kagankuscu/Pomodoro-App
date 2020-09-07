@@ -9,4 +9,8 @@
         android:id="@+id/timerFragment"
         android:name="com.example.pomodoroapp.timer.TimerFragment"
         android:label="TimerFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.pomodoroapp.setting.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
