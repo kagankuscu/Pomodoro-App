@@ -27,5 +27,7 @@
     <string name="long_time">Set long time</string>
     <string name="dark_mode">Dark Mode</string>
 
+    <!--    About Page-->
+    <string name="about_text">Pomodoro timer has minimalist design. It best for your productivity and focus. Its very simple Pomodoro timer it has own loop.</string>
 
 </resources>
