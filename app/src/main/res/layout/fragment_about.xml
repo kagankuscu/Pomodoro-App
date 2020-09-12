@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-<data>
-    <variable
-        name="viewModel"
-        type="com.example.pomodoroapp.about.AboutViewModel" />
-</data>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.pomodoroapp.about.AboutViewModel" />
+    </data>
+
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -12,8 +15,11 @@
         tools:context=".about.AboutFragment">
 
         <TextView
+            style="@style/textViewStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin_start"
+            android:layout_marginEnd="@dimen/margin_end"
             android:text="@string/about_text"
             android:textColor="@color/colorPrimaryDark" />
 
