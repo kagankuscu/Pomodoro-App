@@ -1,5 +1,9 @@
 package com.example.pomodoroapp
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -8,6 +12,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
+import com.example.pomodoroapp.notification.MyNotification
 import com.huawei.hms.ads.HwAds
 import timber.log.Timber
 import timber.log.Timber.DebugTree
@@ -22,6 +27,8 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize the HUAWEI Ads SDK.
         HwAds.init(this)
+        createNotificationChannel()
+
     }
 
     // Menu
@@ -38,6 +45,23 @@ class MainActivity : AppCompatActivity() {
             R.id.settingsFragment -> item.onNavDestinationSelected(navController)
             R.id.aboutFragment -> item.onNavDestinationSelected(navController)
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+    fun createNotificationChannel() {
+        val myNotification = MyNotification(this)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = getString(R.string.app_name)
+            val descriptionText = "My first notification"
+            val importance = NotificationManager.IMPORTANCE_LOW
+            val channel = NotificationChannel(myNotification.CHANNEL_ID, name, importance).apply {
+                description = descriptionText
+            }
+            val notificationManager: NotificationManager =
+                getSystemService(
+                    Context.NOTIFICATION_SERVICE
+                ) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
         }
     }
 }

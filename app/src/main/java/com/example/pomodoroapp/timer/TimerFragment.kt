@@ -7,7 +7,6 @@ import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -15,8 +14,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.pomodoroapp.R
 import com.example.pomodoroapp.databinding.FragmentTimerBinding
+import com.example.pomodoroapp.notification.MyNotification
 import com.huawei.hms.ads.AdParam
-import com.huawei.hms.ads.BannerAdSize
 import com.huawei.hms.ads.banner.BannerView
 
 class TimerFragment : Fragment() {
@@ -32,6 +31,7 @@ class TimerFragment : Fragment() {
 
         val timerViewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
         val vibe: Vibrator? = getSystemService(requireContext(), Vibrator::class.java)
+        val myNotification = MyNotification(requireContext())
 
         // Huawei Ads variable
         val adParam: AdParam = AdParam.Builder().build()
@@ -94,6 +94,7 @@ class TimerFragment : Fragment() {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         vibe?.vibrate(VibrationEffect.createOneShot(500L, 255))
                         timerViewModel.vibrationCompleted()
+                        myNotification.show("Finish")
                     }
                 }
             }
