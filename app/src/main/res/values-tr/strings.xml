@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pomodoro</string>
+    <string name="timer">%s</string>
+
+    <string name="start_btn">Başlat</string>
+    <string name="stop_btn">Durdur</string>
+    <string name="reset_btn">Sıfırla</string>
+    <string name="resume_btn">Devam et</string>
+    <string name="pause_btn">Duraklat</string>
+    <string name="skip_btn">Geç</string>
+    <string name="work">Çalış</string>
+    <string name="short_break">Kısa mola</string>
+    <string name="long_break">Uzun mola</string>
+
+    <!--    Menu -->
+    <string name="about">Hakkında</string>
+    <string name="setting">Ayarlar</string>
+
+    <string name="hello_blank_fragment">Merhaba Boş Fragment</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Zaman Ayarları</string>
+    <string name="general_settings">Genel Ayarlar</string>
+
+    <!-- Messages Preferences -->
+    <string name="work_time">Çalışma süresini ayarla</string>
+    <string name="short_time">Kısa mola süresini ayarla</string>
+    <string name="long_time">Uzun mola süresini ayarla</string>
+    <string name="dark_mode">Gece Modu</string>
+
+    <!--    About Page-->
+    <string name="about_text">
+        Pomodoro uygulaması sizin odaklamanızı ve üretkenliğinizi arttıracak bir uygulamadır.
+        Uygulamanın yapısı çok sade olup kullanımı kolaydır.
+    </string>
+
+</resources>

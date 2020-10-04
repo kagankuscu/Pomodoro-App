@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/settingsFragment"
-        android:icon="@drawable/ic_timer_minute"
-        android:title="@string/setting" />
-
-    <item
         android:id="@+id/aboutFragment"
         android:icon="@drawable/ic_timer_minute"
         android:title="@string/about" />
+
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_timer_minute"
+        android:title="@string/setting" />
 </menu>

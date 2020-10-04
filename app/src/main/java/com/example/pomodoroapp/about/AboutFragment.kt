@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.pomodoroapp.R
 import com.example.pomodoroapp.databinding.FragmentAboutBinding
+import timber.log.Timber
 
 class AboutFragment : Fragment() {
 

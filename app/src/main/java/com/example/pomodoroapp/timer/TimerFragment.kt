@@ -81,6 +81,7 @@ class TimerFragment : Fragment() {
             }
         })
 
+        // TODO: 9/12/2020 Refactor TimerViewModal has hard coded change from there to here and use string values getString() method.
         timerViewModel.infoText.observe(viewLifecycleOwner, Observer { info ->
             info?.let {
                 binding.infoText.text = info
