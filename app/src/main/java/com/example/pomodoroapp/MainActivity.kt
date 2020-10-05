@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
         myNotification.show("Restart")
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onDestroy() {
+        super.onDestroy()
         cancelNotification()
     }
 
@@ -63,19 +63,17 @@ class MainActivity : AppCompatActivity() {
 
     fun createNotificationChannel() {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = getString(R.string.app_name)
-            val descriptionText = "My first notification"
-            val importance = NotificationManager.IMPORTANCE_LOW
-            val channel = NotificationChannel(myNotification.CHANNEL_ID, name, importance).apply {
-                description = descriptionText
-            }
-            notificationManager =
-                getSystemService(
-                    Context.NOTIFICATION_SERVICE
-                ) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
+        val name = getString(R.string.app_name)
+        val descriptionText = "My first notification"
+        val importance = NotificationManager.IMPORTANCE_LOW
+        val channel = NotificationChannel(myNotification.CHANNEL_ID, name, importance).apply {
+            description = descriptionText
         }
+        notificationManager =
+            getSystemService(
+                Context.NOTIFICATION_SERVICE
+            ) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
     }
 
     fun cancelNotification() {
