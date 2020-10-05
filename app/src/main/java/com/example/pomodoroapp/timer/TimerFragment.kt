@@ -107,6 +107,8 @@ class TimerFragment : Fragment() {
 
         binding.constraintLayout.addView(bannerView)
 
+        myNotification.show("${getString(R.string.app_name)} started.")
+
         return binding.root
     }
 }

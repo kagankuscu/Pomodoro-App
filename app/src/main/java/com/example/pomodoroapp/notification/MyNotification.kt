@@ -8,6 +8,7 @@ import com.example.pomodoroapp.R
 class MyNotification(private val context: Context) {
 
     val CHANNEL_ID = "timerNotification"
+    val notificationId = 1
 
     private fun createNotification(): NotificationCompat.Builder {
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
@@ -25,7 +26,7 @@ class MyNotification(private val context: Context) {
             .build()
 
         with(NotificationManagerCompat.from(context)) {
-            notify(1, builder)
+            notify(notificationId, builder)
         }
     }
 }

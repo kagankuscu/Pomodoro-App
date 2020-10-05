@@ -19,6 +19,9 @@ import timber.log.Timber.DebugTree
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var notificationManager: NotificationManager
+    private val myNotification = MyNotification(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,6 +32,16 @@ class MainActivity : AppCompatActivity() {
         HwAds.init(this)
         createNotificationChannel()
 
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        myNotification.show("Restart")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        cancelNotification()
     }
 
     // Menu
@@ -47,8 +60,8 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
     fun createNotificationChannel() {
-        val myNotification = MyNotification(this)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = getString(R.string.app_name)
@@ -57,11 +70,15 @@ class MainActivity : AppCompatActivity() {
             val channel = NotificationChannel(myNotification.CHANNEL_ID, name, importance).apply {
                 description = descriptionText
             }
-            val notificationManager: NotificationManager =
+            notificationManager =
                 getSystemService(
                     Context.NOTIFICATION_SERVICE
                 ) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
+    }
+
+    fun cancelNotification() {
+        notificationManager.cancel(myNotification.notificationId)
     }
 }
