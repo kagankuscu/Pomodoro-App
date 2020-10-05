@@ -3,7 +3,6 @@ package com.example.pomodoroapp
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -12,7 +11,9 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
-import com.example.pomodoroapp.notification.MyNotification
+import com.example.pomodoroapp.notification.TimerNotification
+import com.example.pomodoroapp.notification.TimerNotification.NotificationID.TIMER_NOTIFICATION
+import com.example.pomodoroapp.notification.TimerNotification.NotificationID.TIMER_ID
 import com.huawei.hms.ads.HwAds
 import timber.log.Timber
 import timber.log.Timber.DebugTree
@@ -20,7 +21,7 @@ import timber.log.Timber.DebugTree
 
 class MainActivity : AppCompatActivity() {
     private lateinit var notificationManager: NotificationManager
-    private val myNotification = MyNotification(this)
+    private val myNotification = TimerNotification(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +33,6 @@ class MainActivity : AppCompatActivity() {
         HwAds.init(this)
         createNotificationChannel()
 
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        myNotification.show("Restart")
     }
 
     override fun onDestroy() {
@@ -62,21 +58,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun createNotificationChannel() {
-
-        val name = getString(R.string.app_name)
-        val descriptionText = "My first notification"
-        val importance = NotificationManager.IMPORTANCE_LOW
-        val channel = NotificationChannel(myNotification.CHANNEL_ID, name, importance).apply {
-            description = descriptionText
-        }
         notificationManager =
             getSystemService(
                 Context.NOTIFICATION_SERVICE
             ) as NotificationManager
-        notificationManager.createNotificationChannel(channel)
+        notificationManager.createNotificationChannel(myNotification.createNotificationChannel())
     }
 
     fun cancelNotification() {
-        notificationManager.cancel(myNotification.notificationId)
+        notificationManager.cancel(TIMER_ID)
     }
 }

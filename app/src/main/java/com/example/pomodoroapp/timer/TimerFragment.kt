@@ -14,7 +14,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.pomodoroapp.R
 import com.example.pomodoroapp.databinding.FragmentTimerBinding
-import com.example.pomodoroapp.notification.MyNotification
+import com.example.pomodoroapp.notification.TimerNotification
+import com.example.pomodoroapp.notification.TimerNotification.NotificationID.TIMER_ID
+import com.example.pomodoroapp.notification.TimerNotification.NotificationID.TIMER_NOTIFICATION
 import com.huawei.hms.ads.AdParam
 import com.huawei.hms.ads.banner.BannerView
 
@@ -31,7 +33,7 @@ class TimerFragment : Fragment() {
 
         val timerViewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
         val vibe: Vibrator? = getSystemService(requireContext(), Vibrator::class.java)
-        val myNotification = MyNotification(requireContext())
+        val myNotification = TimerNotification(requireContext())
 
         // Huawei Ads variable
         val adParam: AdParam = AdParam.Builder().build()
@@ -94,7 +96,6 @@ class TimerFragment : Fragment() {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         vibe?.vibrate(VibrationEffect.createOneShot(500L, 255))
                         timerViewModel.vibrationCompleted()
-                        myNotification.show("Finish")
                     }
                 }
             }
@@ -107,8 +108,7 @@ class TimerFragment : Fragment() {
 
         binding.constraintLayout.addView(bannerView)
 
-        myNotification.show("${getString(R.string.app_name)} started.")
-
+        myNotification.show("App Started")
         return binding.root
     }
 }
