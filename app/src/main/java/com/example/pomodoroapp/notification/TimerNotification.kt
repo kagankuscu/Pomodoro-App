@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.pomodoroapp.MainActivity
@@ -22,11 +23,13 @@ class TimerNotification(private val context: Context) : BaseNotification {
     private fun createTapFunction(): PendingIntent {
         val intent = Intent(context, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            Log.d("Timer" +
+                    "notification", "${flags}")
         }
 
         return PendingIntent.getActivity(
             context, 0,
-            intent, 0
+            intent, PendingIntent.FLAG_UPDATE_CURRENT
         )
     }
 
@@ -44,7 +47,7 @@ class TimerNotification(private val context: Context) : BaseNotification {
     fun createNotificationChannel(): NotificationChannel {
         val name = context.resources.getString(R.string.timer_notification)
         val descriptionText = "My first notification"
-        val importance = NotificationManager.IMPORTANCE_LOW
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
         val channel = NotificationChannel(TIMER_NOTIFICATION, name, importance).apply {
             description = descriptionText
         }

@@ -50,6 +50,7 @@ class TimerFragment : Fragment() {
                     binding.btnSkip.visibility = View.VISIBLE
                     binding.btnReset.isEnabled = true
                     binding.infoText.visibility = View.VISIBLE
+                    myNotification.show("Timer Started")
                 } else {
                     binding.btnStart.text = getString(R.string.start_btn)
                     binding.btnSkip.visibility = View.INVISIBLE
@@ -108,7 +109,6 @@ class TimerFragment : Fragment() {
 
         binding.constraintLayout.addView(bannerView)
 
-        myNotification.show("App Started")
         return binding.root
     }
 }

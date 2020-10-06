@@ -1,6 +1,5 @@
 package com.example.pomodoroapp
 
-import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Bundle
@@ -8,11 +7,11 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import com.example.pomodoroapp.notification.TimerNotification
-import com.example.pomodoroapp.notification.TimerNotification.NotificationID.TIMER_NOTIFICATION
 import com.example.pomodoroapp.notification.TimerNotification.NotificationID.TIMER_ID
 import com.huawei.hms.ads.HwAds
 import timber.log.Timber
@@ -37,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        // TODO: closing app will not call thi function
         cancelNotification()
     }
 
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun createNotificationChannel() {
+    private fun createNotificationChannel() {
         notificationManager =
             getSystemService(
                 Context.NOTIFICATION_SERVICE
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         notificationManager.createNotificationChannel(myNotification.createNotificationChannel())
     }
 
-    fun cancelNotification() {
+    private fun cancelNotification() {
         notificationManager.cancel(TIMER_ID)
     }
 }
