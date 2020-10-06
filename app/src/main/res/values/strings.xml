@@ -29,5 +29,6 @@
 
     <!--    About Page-->
     <string name="about_text">Pomodoro timer has minimalist design. It best for your productivity and focus. Its very simple Pomodoro timer it has own loop.</string>
+    <string name="timer_notification">Timer Notification</string>
 
 </resources>

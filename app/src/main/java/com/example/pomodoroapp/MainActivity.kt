@@ -1,19 +1,27 @@
 package com.example.pomodoroapp
 
+import android.app.NotificationManager
+import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
+import com.example.pomodoroapp.notification.TimerNotification
+import com.example.pomodoroapp.notification.TimerNotification.NotificationID.TIMER_ID
 import com.huawei.hms.ads.HwAds
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var notificationManager: NotificationManager
+    private val myNotification = TimerNotification(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,6 +30,14 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize the HUAWEI Ads SDK.
         HwAds.init(this)
+        createNotificationChannel()
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // TODO: closing app will not call thi function
+        cancelNotification()
     }
 
     // Menu
@@ -39,5 +55,17 @@ class MainActivity : AppCompatActivity() {
             R.id.aboutFragment -> item.onNavDestinationSelected(navController)
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun createNotificationChannel() {
+        notificationManager =
+            getSystemService(
+                Context.NOTIFICATION_SERVICE
+            ) as NotificationManager
+        notificationManager.createNotificationChannel(myNotification.createNotificationChannel())
+    }
+
+    private fun cancelNotification() {
+        notificationManager.cancel(TIMER_ID)
     }
 }
