@@ -8,4 +8,7 @@
     <dimen name="margin_dev">32dp</dimen>
     <dimen name="margin_des">32dp</dimen>
     <dimen name="margin_con">32dp</dimen>
+    <dimen name="margin_email">3dp</dimen>
+    <dimen name="margin_name">0dp</dimen>
+    <dimen name="padding_btn_8dp">8dp</dimen>
 </resources>
