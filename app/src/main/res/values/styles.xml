@@ -13,11 +13,13 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">130dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline4</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline4
+        </item>
     </style>
 
     <style name="timer_txt_view" parent="textViewStyle">
-        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline1</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline1
+        </item>
     </style>
 
     <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -27,4 +29,40 @@
         <item name="fontFamily">@font/dancing_script_bold</item>
         <item name="android:fontFamily">@font/dancing_script_bold</item>
     </style>
+
+    <style name="About">
+        <item name="fontFamily">@font/raleway</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:layout_marginTop">@dimen/margin_top</item>
+        <item name="android:layout_marginStart">@dimen/margin_start</item>
+        <item name="android:layout_marginEnd">@dimen/margin_end</item>
+        <item name="android:layout_marginBottom">@dimen/margin_bottom</item>
+    </style>
+
+    <style name="HeadLine3" parent="About">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline3
+        </item>
+        <item name="android:textColor">@color/black_D9</item>
+    </style>
+
+    <style name="HeadLine5" parent="About">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline5
+        </item>
+        <item name="android:textColor">@color/black_CC</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="HeadLine6" parent="About">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline6
+        </item>
+        <item name="android:textColor">@color/black_CC</item>
+    </style>
+
+    <style name="SubTitle1" parent="About">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1
+        </item>
+    </style>
+
 </resources>

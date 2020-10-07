@@ -28,7 +28,22 @@
     <string name="dark_mode">Dark Mode</string>
 
     <!--    About Page-->
-    <string name="about_text">Pomodoro timer has minimalist design. It best for your productivity and focus. Its very simple Pomodoro timer it has own loop.</string>
+    <string name="about_text">
+        Pomodoro timer has minimalist design.
+        \nIt best for your productivity and focus.
+        \nIts very simple Pomodoro timer it has own loop.
+    </string>
     <string name="timer_notification">Timer Notification</string>
+    <string name="version">Version</string>
+    <string name="description">Description</string>
+    <string name="app_icon">App Icon</string>
+    <string name="developer_information">Developer Information</string>
+    <string name="dev_name">Kagan Kuscu</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="dev_email">kagan-kuscu@outlook.com</string>
+    <string name="contribute">It is open source. If you are interested you can find it on the Github.</string>
+    <string name="btn_view_on_github">View on Github</string>
+    <string name="contributeTitle">Contribute</string>
 
 </resources>

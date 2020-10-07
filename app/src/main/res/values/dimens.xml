@@ -2,4 +2,10 @@
 <resources>
     <dimen name="margin_end">16dp</dimen>
     <dimen name="margin_start">16dp</dimen>
+    <dimen name="margin_top">8dp</dimen>
+    <dimen name="margin_bottom">8dp</dimen>
+
+    <dimen name="margin_dev">32dp</dimen>
+    <dimen name="margin_des">32dp</dimen>
+    <dimen name="margin_con">32dp</dimen>
 </resources>

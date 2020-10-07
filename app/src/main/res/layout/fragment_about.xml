@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,20 +10,114 @@
             type="com.example.pomodoroapp.about.AboutViewModel" />
     </data>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".about.AboutFragment">
+        android:layout_height="wrap_content">
 
-        <TextView
-            style="@style/textViewStyle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin_start"
-            android:layout_marginEnd="@dimen/margin_end"
-            android:text="@string/about_text"
-            android:textColor="@color/colorPrimaryDark" />
+            android:orientation="vertical"
+            tools:context=".about.AboutFragment"
+            android:paddingBottom="34dp">
 
-    </FrameLayout>
+            <ImageView
+                android:id="@+id/iconApp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_top"
+                android:layout_marginBottom="@dimen/margin_bottom"
+                android:contentDescription="@string/app_icon"
+                app:srcCompat="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/appText"
+                style="@style/HeadLine6"
+                android:layout_gravity="center"
+                android:text="@string/app_name" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/versionTitle"
+                    style="@style/HeadLine5"
+                    android:layout_marginTop="@dimen/margin_dev"
+                    android:text="@string/version" />
+
+                <TextView
+                    android:id="@+id/version"
+                    style="@style/HeadLine5"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginTop="@dimen/margin_dev"
+                    android:text="1.0"
+                    android:textColor="@color/black_CC"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/descriptionTitle"
+                style="@style/HeadLine5"
+                android:layout_marginTop="@dimen/margin_des"
+                android:text="@string/description" />
+
+            <TextView
+                android:id="@+id/description"
+                style="@style/HeadLine6"
+                android:text="@string/about_text" />
+
+            <TextView
+                style="@style/HeadLine5"
+                android:layout_marginTop="@dimen/margin_dev"
+                android:text="@string/developer_information" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/HeadLine6"
+                    android:text="@string/name" />
+
+                <TextView
+                    style="@style/HeadLine6"
+                    android:text="@string/dev_name"
+                    android:layout_marginStart="0dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/HeadLine6"
+                    android:text="@string/email" />
+
+                <TextView
+                    style="@style/HeadLine6"
+                    android:text="@string/dev_email"
+                    android:layout_marginStart="3dp"/>
+            </LinearLayout>
+
+            <TextView
+                style="@style/HeadLine5"
+                android:text="@string/contributeTitle"
+                android:layout_marginTop="@dimen/margin_con"/>
+
+            <TextView
+                style="@style/HeadLine6"
+                android:text="@string/contribute" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/btn_view_on_github" />
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>
