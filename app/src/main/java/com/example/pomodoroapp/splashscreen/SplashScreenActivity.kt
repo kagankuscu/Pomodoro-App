@@ -14,7 +14,7 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         relativeLayout.alpha = 0f
-        relativeLayout.animate().setDuration(1500).alpha(1f).withEndAction {
+        relativeLayout.animate().setDuration(500).alpha(1f).withEndAction {
 
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
