@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Pomodoro</string>
-    <string name="timer">%s</string>
+    <string name="app_name" translatable="false">Pomodoro</string>
+    <string name="timer" translatable="false">%s</string>
     <string name="start_btn">Start</string>
     <string name="stop_btn">Stop</string>
     <string name="reset_btn">Reset</string>
@@ -15,8 +15,6 @@
     <string name="about">About</string>
     <string name="setting">Setting</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Preference Titles -->
     <string name="messages_header">Time Setting</string>
     <string name="general_settings">General Settings</string>
@@ -33,16 +31,16 @@
         \nIt best for your productivity and focus.
         \nIts very simple Pomodoro timer it has own loop.
     </string>
-    <string name="timer_notification">Timer Notification</string>
+    <string name="timer_notification" translatable="false">Timer Notification</string>
     <string name="version">Version</string>
     <string name="description">Description</string>
-    <string name="app_icon">App Icon</string>
+    <string name="app_icon" translatable="false">App Icon</string>
     <string name="developer_information">Developer Information</string>
-    <string name="dev_name">Kagan Kuscu</string>
+    <string name="dev_name" translatable="false">Kagan Kuscu</string>
     <string name="name">Name</string>
-    <string name="email">Email</string>
-    <string name="dev_email">kagan-kuscu@outlook.com</string>
-    <string name="contribute">It is open source. If you are interested you can find it on the Github.</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="dev_email" translatable="false">kagan-kuscu@outlook.com</string>
+    <string name="contribute">If you are interested you can find it on the Github.</string>
     <string name="btn_view_on_github">View on Github</string>
     <string name="contributeTitle">Contribute</string>
 

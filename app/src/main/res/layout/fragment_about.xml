@@ -18,8 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            tools:context=".about.AboutFragment"
-            android:paddingBottom="34dp">
+            android:paddingBottom="32dp"
+            tools:context=".about.AboutFragment">
 
             <ImageView
                 android:id="@+id/iconApp"
@@ -51,7 +51,7 @@
                 <TextView
                     android:id="@+id/version"
                     style="@style/HeadLine5"
-                    android:layout_marginStart="100dp"
+                    android:layout_marginStart="0dp"
                     android:layout_marginTop="@dimen/margin_dev"
                     android:text="1.0"
                     android:textColor="@color/black_CC"
@@ -84,8 +84,8 @@
 
                 <TextView
                     style="@style/HeadLine6"
-                    android:text="@string/dev_name"
-                    android:layout_marginStart="0dp"/>
+                    android:layout_marginStart="@dimen/margin_name"
+                    android:text="@string/dev_name" />
             </LinearLayout>
 
             <LinearLayout
@@ -98,14 +98,14 @@
 
                 <TextView
                     style="@style/HeadLine6"
-                    android:text="@string/dev_email"
-                    android:layout_marginStart="3dp"/>
+                    android:layout_marginStart="@dimen/margin_email"
+                    android:text="@string/dev_email" />
             </LinearLayout>
 
             <TextView
                 style="@style/HeadLine5"
-                android:text="@string/contributeTitle"
-                android:layout_marginTop="@dimen/margin_con"/>
+                android:layout_marginTop="@dimen/margin_con"
+                android:text="@string/contributeTitle" />
 
             <TextView
                 style="@style/HeadLine6"
@@ -115,8 +115,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/margin_end"
+                android:background="@drawable/button_selector"
+                android:padding="@dimen/padding_btn_8dp"
                 android:text="@string/btn_view_on_github" />
-
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
