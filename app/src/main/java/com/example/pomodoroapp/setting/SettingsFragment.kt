@@ -9,6 +9,9 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import com.example.pomodoroapp.R
 import com.example.pomodoroapp.timer.TimerViewModel
+import com.example.pomodoroapp.timer.TimerViewModel.Companion.LONG_BREAK
+import com.example.pomodoroapp.timer.TimerViewModel.Companion.SHORT_BREAK
+import com.example.pomodoroapp.timer.TimerViewModel.Companion.WORK
 import timber.log.Timber
 
 class SettingsFragment : PreferenceFragmentCompat() {
@@ -60,6 +63,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
         shortBreak?.setValueIndex(0)
         longBreak?.setValueIndex(2)
 
+        timerViewModel.work = WORK
+        timerViewModel.shortBreak = SHORT_BREAK
+        timerViewModel.longBreak = LONG_BREAK
+
         setClickListener()
     }
 
@@ -78,16 +85,19 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         workTime?.setOnPreferenceChangeListener { preference, newValue ->
             Timber.d("preference name: ${preference}, newValue:${newValue}")
+            if (newValue is Long) timerViewModel.work = newValue
             true
         }
 
         shortBreak?.setOnPreferenceChangeListener { preference, newValue ->
             Timber.d("preference name: ${preference}, newValue:${newValue}")
+            if (newValue is Long) timerViewModel.shortBreak = newValue
             true
         }
 
         longBreak?.setOnPreferenceChangeListener { preference, newValue ->
             Timber.d("preference name: ${preference}, newValue:${newValue}")
+            if (newValue is Long) timerViewModel.longBreak = newValue
             true
         }
     }
