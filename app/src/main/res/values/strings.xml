@@ -29,5 +29,11 @@
 
     <!--    About Page-->
     <string name="about_text">Pomodoro timer has minimalist design. It best for your productivity and focus. Its very simple Pomodoro timer it has own loop.</string>
+    <string name="keep_screen_on">Keep Screen On</string>
+    <string name="key_mode">mode</string>
+    <string name="key_keep_screen_on">keep_screen_on</string>
+    <string name="key_work_time">work_time</string>
+    <string name="key_short_break">short_break</string>
+    <string name="key_long_break">long_break</string>
 
 </resources>

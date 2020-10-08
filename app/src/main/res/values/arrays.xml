@@ -9,4 +9,34 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+    <string-array name="time">
+        <item>5 minutes</item>
+        <item>10 minutes</item>
+        <item>15 minutes</item>
+        <item>20 minutes</item>
+        <item>25 minutes</item>
+        <item>30 minutes</item>
+        <item>35 minutes</item>
+        <item>40 minutes</item>
+        <item>45 minutes</item>
+        <item>50 minutes</item>
+        <item>55 minutes</item>
+        <item>1 hour</item>
+    </string-array>
+
+    <string-array name="time_values">
+        <item>300_000L</item>
+        <item>600_000L</item>
+        <item>900_000L</item>
+        <item>1_200_000L</item>
+        <item>1_500_000L</item>
+        <item>1_800_000L</item>
+        <item>2_100_000L</item>
+        <item>2_400_000L</item>
+        <item>2_700_000L</item>
+        <item>3_000_000L</item>
+        <item>3_300_000L</item>
+        <item>3_600_000L</item>
+    </string-array>
 </resources>
