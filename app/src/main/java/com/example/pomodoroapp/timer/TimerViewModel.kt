@@ -37,15 +37,6 @@ class TimerViewModel : ViewModel() {
 
     private var pomodoro = 0
 
-    fun createArray(): Array<Long?> {
-        return arrayOf(
-            _work.value, _shortBreak.value,
-            _work.value, _shortBreak.value,
-            _work.value, _shortBreak.value,
-            _work.value, _longBreak.value
-        )
-    }
-
     private val _startTimerStatus = MutableLiveData<Boolean>()
 
     val startTimerStatus: LiveData<Boolean>
@@ -125,6 +116,26 @@ class TimerViewModel : ViewModel() {
         pomodoro = 0
     }
 
+    fun resetTimerCompleted() {
+        _resetTimerStatus.value = false
+    }
+
+    fun setWorkTime(value: Long) {
+        _work.value = value
+    }
+
+    fun setShortBreak(value: Long) {
+        _shortBreak.value = value
+    }
+
+    fun setLongBreak(value: Long) {
+        _longBreak.value = value
+    }
+
+    fun vibrationCompleted() {
+        _vibration.value = false
+    }
+
     private fun createTimerObject(workTime: Long): CountDownTimer {
 
         return object : CountDownTimer(
@@ -201,12 +212,17 @@ class TimerViewModel : ViewModel() {
         return false
     }
 
-    private fun setVibration() {
-        _vibration.value = true
+    private fun createArray(): Array<Long?> {
+        return arrayOf(
+            _work.value, _shortBreak.value,
+            _work.value, _shortBreak.value,
+            _work.value, _shortBreak.value,
+            _work.value, _longBreak.value
+        )
     }
 
-    fun vibrationCompleted() {
-        _vibration.value = false
+    private fun setVibration() {
+        _vibration.value = true
     }
 
     private fun onPauseTimer() {
@@ -241,10 +257,6 @@ class TimerViewModel : ViewModel() {
         _resetTimerStatus.value = true
     }
 
-    fun resetTimerCompleted() {
-        _resetTimerStatus.value = false
-    }
-
     private fun setTimer() {
         countDownTimer.start()
     }
@@ -253,15 +265,4 @@ class TimerViewModel : ViewModel() {
         _timerString.value = timerZero
     }
 
-    fun setWorkTime(value: Long) {
-        _work.value = value
-    }
-
-    fun setShortBreak(value: Long) {
-        _shortBreak.value = value
-    }
-
-    fun setLongBreak(value: Long) {
-        _longBreak.value = value
-    }
 }
