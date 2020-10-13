@@ -20,17 +20,31 @@ class TimerViewModel : ViewModel() {
 
     }
 
-    var work = 0L
-    var shortBreak = 0L
-    var longBreak = 0L
+    private val _work = MutableLiveData<Long>()
+
+    val work: LiveData<Long>
+        get() = _work
+
+    private val _shortBreak = MutableLiveData<Long>()
+
+    val shortBreak: LiveData<Long>
+        get() = _shortBreak
+
+    private val _longBreak = MutableLiveData<Long>()
+
+    val longBreak: LiveData<Long>
+        get() = _longBreak
+
     private var pomodoro = 0
 
-    private val pomodoroArr = arrayOf(
-        work, shortBreak,
-        work, shortBreak,
-        work, shortBreak,
-        work, longBreak
-    )
+    fun createArray(): Array<Long?> {
+        return arrayOf(
+            _work.value, _shortBreak.value,
+            _work.value, _shortBreak.value,
+            _work.value, _shortBreak.value,
+            _work.value, _longBreak.value
+        )
+    }
 
     private val _startTimerStatus = MutableLiveData<Boolean>()
 
@@ -69,7 +83,7 @@ class TimerViewModel : ViewModel() {
         get() = _vibration
 
     init {
-        countDownTimer = createTimerObject(work)
+        countDownTimer = createTimerObject(WORK)
         _startTimerStatus.value = false
         _resetTimerStatus.value = false
 
@@ -151,16 +165,18 @@ class TimerViewModel : ViewModel() {
     private fun nextTimer() {
         timerCancel()
 
+        val pomodoroArr = createArray()
+
         if (pomodoro > pomodoroArr.size - 1) pomodoro = 0
 
-        countDownTimer = createTimerObject(pomodoroArr[pomodoro])
+        countDownTimer = createTimerObject(pomodoroArr[pomodoro]!!)
 
         setTimer()
 
         when (pomodoroArr[pomodoro]) {
-            WORK -> _infoText.value = "Work"
-            SHORT_BREAK -> _infoText.value = "Short Break"
-            LONG_BREAK -> _infoText.value = "Long Break"
+            _work.value -> _infoText.value = "Work"
+            _shortBreak.value -> _infoText.value = "Short Break"
+            _longBreak.value -> _infoText.value = "Long Break"
         }
 
         pomodoro++
@@ -235,5 +251,17 @@ class TimerViewModel : ViewModel() {
 
     private fun resetTextString() {
         _timerString.value = timerZero
+    }
+
+    fun setWorkTime(value: Long) {
+        _work.value = value
+    }
+
+    fun setShortBreak(value: Long) {
+        _shortBreak.value = value
+    }
+
+    fun setLongBreak(value: Long) {
+        _longBreak.value = value
     }
 }

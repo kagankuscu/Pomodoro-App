@@ -2,7 +2,9 @@ package com.example.pomodoroapp.setting
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.preference.EditTextPreference
 import androidx.preference.ListPreference
 import androidx.preference.PreferenceFragmentCompat
@@ -13,6 +15,7 @@ import com.example.pomodoroapp.timer.TimerViewModel.Companion.LONG_BREAK
 import com.example.pomodoroapp.timer.TimerViewModel.Companion.SHORT_BREAK
 import com.example.pomodoroapp.timer.TimerViewModel.Companion.WORK
 import timber.log.Timber
+import kotlin.concurrent.timer
 
 class SettingsFragment : PreferenceFragmentCompat() {
     private var prefs: SharedPreferences? = null
@@ -63,10 +66,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
         shortBreak?.setValueIndex(0)
         longBreak?.setValueIndex(2)
 
-        timerViewModel.work = WORK
-        timerViewModel.shortBreak = SHORT_BREAK
-        timerViewModel.longBreak = LONG_BREAK
-
         setClickListener()
     }
 
@@ -85,19 +84,22 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         workTime?.setOnPreferenceChangeListener { preference, newValue ->
             Timber.d("preference name: ${preference}, newValue:${newValue}")
-            if (newValue is Long) timerViewModel.work = newValue
+            if (newValue is String) {
+//                timerViewModel.setWorkTime(newValue.toLong())
+                Timber.d("set the work time")
+            }
             true
         }
 
         shortBreak?.setOnPreferenceChangeListener { preference, newValue ->
             Timber.d("preference name: ${preference}, newValue:${newValue}")
-            if (newValue is Long) timerViewModel.shortBreak = newValue
+            if (newValue is Long) timerViewModel.setShortBreak(newValue.toLong())
             true
         }
 
         longBreak?.setOnPreferenceChangeListener { preference, newValue ->
             Timber.d("preference name: ${preference}, newValue:${newValue}")
-            if (newValue is Long) timerViewModel.longBreak = newValue
+            if (newValue is Long) timerViewModel.setLongBreak(newValue.toLong())
             true
         }
     }

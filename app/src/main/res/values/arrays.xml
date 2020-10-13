@@ -26,17 +26,17 @@
     </string-array>
 
     <string-array name="time_values">
-        <item>300_000</item>
-        <item>600_000</item>
-        <item>900_000</item>
-        <item>1_200_000</item>
-        <item>1_500_000</item>
-        <item>1_800_000</item>
-        <item>2_100_000</item>
-        <item>2_400_000</item>
-        <item>2_700_000</item>
-        <item>3_000_000</item>
-        <item>3_300_000</item>
-        <item>3_600_000</item>
+        <item>300000</item>
+        <item>600000</item>
+        <item>900000</item>
+        <item>1200000</item>
+        <item>1500000</item>
+        <item>1800000</item>
+        <item>2100000</item>
+        <item>2400000</item>
+        <item>2700000</item>
+        <item>3000000</item>
+        <item>3300000</item>
+        <item>3600000</item>
     </string-array>
 </resources>

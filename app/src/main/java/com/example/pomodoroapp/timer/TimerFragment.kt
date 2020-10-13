@@ -7,19 +7,20 @@ import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import com.example.pomodoroapp.R
 import com.example.pomodoroapp.databinding.FragmentTimerBinding
 import com.huawei.hms.ads.AdParam
-import com.huawei.hms.ads.BannerAdSize
 import com.huawei.hms.ads.banner.BannerView
+import timber.log.Timber
 
 class TimerFragment : Fragment() {
+    private lateinit var timerViewModel: TimerViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,7 +31,7 @@ class TimerFragment : Fragment() {
             inflater, R.layout.fragment_timer, container, false
         )
 
-        val timerViewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
+        timerViewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
         val vibe: Vibrator? = getSystemService(requireContext(), Vibrator::class.java)
 
         // Huawei Ads variable
@@ -40,6 +41,8 @@ class TimerFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.timerViewModel = timerViewModel
+
+        setTime()
 
         timerViewModel.startTimerStatus.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -98,6 +101,23 @@ class TimerFragment : Fragment() {
             }
         })
 
+        timerViewModel.work.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                Timber.d("work time long: $it")
+            }
+        })
+
+        timerViewModel.shortBreak.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                Timber.d("short time long: $it")
+            }
+        })
+
+        timerViewModel.longBreak.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                Timber.d("long time long: $it")
+            }
+        })
 
         bannerView.adId = "testw6vs28auh3"
         if (Build.MANUFACTURER == "HUAWEI")
@@ -106,5 +126,31 @@ class TimerFragment : Fragment() {
         binding.constraintLayout.addView(bannerView)
 
         return binding.root
+    }
+
+    private fun setTime() {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+
+        timerViewModel.setWorkTime(
+            sharedPreferences.getString(
+                getString(R.string.key_work_time),
+                "1500000"
+            )!!.toLong()
+        )
+
+        timerViewModel.setShortBreak(
+            sharedPreferences.getString(
+                getString(R.string.key_short_break),
+                "300000"
+            )!!.toLong()
+        )
+
+        timerViewModel.setLongBreak(
+            sharedPreferences.getString(
+                getString(R.string.key_long_break),
+                "900000"
+            )!!.toLong()
+        )
+
     }
 }
