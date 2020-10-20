@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme.Pomodoro.Dark" parent="AppTheme.Pomodoro">
+    <style name="AppTheme.Pomodoro" parent="Base.Pomodoro">
         <item name="colorPrimary">@color/colorBlack</item>
         <item name="colorPrimaryDark">@color/colorBlackDark</item>
         <item name="colorAccent">@color/colorBlackAccent</item>

@@ -2,20 +2,13 @@ package com.example.pomodoroapp.setting
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
-import androidx.preference.EditTextPreference
 import androidx.preference.ListPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import com.example.pomodoroapp.R
 import com.example.pomodoroapp.timer.TimerViewModel
-import com.example.pomodoroapp.timer.TimerViewModel.Companion.LONG_BREAK
-import com.example.pomodoroapp.timer.TimerViewModel.Companion.SHORT_BREAK
-import com.example.pomodoroapp.timer.TimerViewModel.Companion.WORK
 import timber.log.Timber
-import kotlin.concurrent.timer
 
 class SettingsFragment : PreferenceFragmentCompat() {
     private var prefs: SharedPreferences? = null
@@ -31,7 +24,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
-        timerViewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
+        timerViewModel = ViewModelProvider(requireActivity()).get(TimerViewModel::class.java)
         prefs = preferenceManager.sharedPreferences
 
         setPreferences()
@@ -78,6 +71,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         keepScreenOn?.setOnPreferenceChangeListener { preference, newValue ->
             Timber.d("preference name: $preference, newValue: $newValue")
+            timerViewModel.setKeepScreenOff()
 
             true
         }

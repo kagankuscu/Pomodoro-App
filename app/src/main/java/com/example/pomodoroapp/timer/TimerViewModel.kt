@@ -70,6 +70,11 @@ class TimerViewModel : ViewModel() {
 
     private val _vibration = MutableLiveData<Boolean>()
 
+    private val _isKeepScreenOn = MutableLiveData<Boolean>()
+
+    val isKeepScreenOn: LiveData<Boolean>
+        get() = _isKeepScreenOn
+
     val vibration: LiveData<Boolean>
         get() = _vibration
 
@@ -79,6 +84,14 @@ class TimerViewModel : ViewModel() {
         _resetTimerStatus.value = false
 
         _timerString.value = timerZero
+    }
+
+    fun setKeepScreenOn() {
+        _isKeepScreenOn.value = true
+    }
+
+    fun setKeepScreenOff() {
+        _isKeepScreenOn.value = false
     }
 
     fun toggleStartAndStop() {

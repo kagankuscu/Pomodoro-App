@@ -1,5 +1,6 @@
 package com.example.pomodoroapp.timer
 
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
@@ -7,6 +8,7 @@ import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -21,6 +23,8 @@ import timber.log.Timber
 
 class TimerFragment : Fragment() {
     private lateinit var timerViewModel: TimerViewModel
+    private lateinit var settingPref: SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,8 +35,10 @@ class TimerFragment : Fragment() {
             inflater, R.layout.fragment_timer, container, false
         )
 
-        timerViewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
+        timerViewModel = ViewModelProvider(requireActivity()).get(TimerViewModel::class.java)
+        settingPref = PreferenceManager.getDefaultSharedPreferences(requireActivity())
         val vibe: Vibrator? = getSystemService(requireContext(), Vibrator::class.java)
+
 
         // Huawei Ads variable
         val adParam: AdParam = AdParam.Builder().build()
@@ -43,6 +49,7 @@ class TimerFragment : Fragment() {
         binding.timerViewModel = timerViewModel
 
         setTime()
+        setKeepScreenOn()
 
         timerViewModel.startTimerStatus.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -101,31 +108,23 @@ class TimerFragment : Fragment() {
             }
         })
 
-        timerViewModel.work.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                Timber.d("work time long: $it")
-            }
-        })
-
-        timerViewModel.shortBreak.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                Timber.d("short time long: $it")
-            }
-        })
-
-        timerViewModel.longBreak.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                Timber.d("long time long: $it")
-            }
-        })
-
         bannerView.adId = "testw6vs28auh3"
         if (Build.MANUFACTURER == "HUAWEI")
             bannerView.loadAd(adParam)
 
         binding.constraintLayout.addView(bannerView)
 
+        binding.constraintLayout.keepScreenOn = timerViewModel.isKeepScreenOn.value!!
+
         return binding.root
+    }
+
+    private fun setKeepScreenOn() {
+        if (settingPref.getBoolean(getString(R.string.key_keep_screen_on), false)) {
+            timerViewModel.setKeepScreenOn()
+        } else {
+            timerViewModel.setKeepScreenOff()
+        }
     }
 
     private fun setTime() {

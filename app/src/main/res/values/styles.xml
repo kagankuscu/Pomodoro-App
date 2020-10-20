@@ -1,23 +1,28 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="Base.Pomodoro" parent="Theme.MaterialComponents.DayNight">
         <item name="fontFamily">@font/raleway_semibold</item>
         <item name="android:fontFamily">@font/raleway_semibold</item>
     </style>
+
+    <style name="AppTheme.Pomodoro" parent="Base.Pomodoro">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
 
     <style name="textViewStyle">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">130dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline4</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline4
+        </item>
     </style>
 
     <style name="timer_txt_view" parent="textViewStyle">
-        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline1</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline1
+        </item>
     </style>
 
     <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">

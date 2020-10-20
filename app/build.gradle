@@ -50,4 +50,6 @@ dependencies {
     // Huawei Ads SDK
     implementation 'com.huawei.hms:ads-lite:13.4.30.307'
 
+    implementation 'com.google.android.material:material:1.2.1'
+
 }
