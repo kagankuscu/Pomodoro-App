@@ -8,7 +8,6 @@ import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -19,7 +18,6 @@ import com.example.pomodoroapp.R
 import com.example.pomodoroapp.databinding.FragmentTimerBinding
 import com.huawei.hms.ads.AdParam
 import com.huawei.hms.ads.banner.BannerView
-import timber.log.Timber
 
 class TimerFragment : Fragment() {
     private lateinit var timerViewModel: TimerViewModel

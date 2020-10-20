@@ -14,7 +14,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private var prefs: SharedPreferences? = null
     private val FIRST_RUN = "first_run"
 
-    private var darkMode: SwitchPreference? = null
+//    private var darkMode: SwitchPreference? = null
     private var keepScreenOn: SwitchPreference? = null
     private var workTime: ListPreference? = null
     private var shortBreak: ListPreference? = null
@@ -40,8 +40,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun setPreferences() {
-        darkMode =
-            preferenceScreen.findPreference<SwitchPreference>(getString(R.string.key_mode))
+//        darkMode =
+//            preferenceScreen.findPreference<SwitchPreference>(getString(R.string.key_mode))
         keepScreenOn =
             preferenceScreen.findPreference<SwitchPreference>(getString(R.string.key_keep_screen_on))
         workTime =
@@ -64,10 +64,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     private fun setClickListener() {
 
-        darkMode?.setOnPreferenceChangeListener { preference, newValue ->
-            Timber.d("preferences name:$preference, new value $newValue")
-            true
-        }
+//        darkMode?.setOnPreferenceChangeListener { preference, newValue ->
+//            Timber.d("preferences name:$preference, new value $newValue")
+//            true
+//        }
 
         keepScreenOn?.setOnPreferenceChangeListener { preference, newValue ->
             Timber.d("preference name: $preference, newValue: $newValue")
