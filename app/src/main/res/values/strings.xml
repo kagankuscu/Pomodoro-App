@@ -27,11 +27,27 @@
 
     <!--    About Page-->
     <string name="about_text">Pomodoro timer has minimalist design. It best for your productivity and focus. Its very simple Pomodoro timer it has own loop.</string>
-    <string name="keep_screen_on">Keep Screen On</string>
-    <string name="key_mode">mode</string>
-    <string name="key_keep_screen_on">keep_screen_on</string>
-    <string name="key_work_time">work_time</string>
-    <string name="key_short_break">short_break</string>
-    <string name="key_long_break">long_break</string>
+    <string name="version">Version</string>
+    <string name="description">Description</string>
+    <string name="developer_information">Developer Information</string>
+    <string name="name">Name</string>
+    <string name="dev_name" translatable="false">Kagan Kuscu</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="dev_email" translatable="false">kagan.kuscu@outlook.com</string>
+    <string name="contribute">If you are interested you can find at Github.</string>
+    <string name="btn_view_on_github">View on the Github</string>
+    <string name="contributeTitle">Contribute</string>
+
+    <!--    Setting Page -->
+    <string name="app_icon" translatable="false">app icon</string>
+    <string name="keep_screen_on" translatable="false">Keep Screen On</string>
+    <string name="key_mode" translatable="false">mode</string>
+    <string name="key_keep_screen_on" translatable="false">keep_screen_on</string>
+    <string name="key_work_time" translatable="false">work_time</string>
+    <string name="key_short_break" translatable="false">short_break</string>
+    <string name="key_long_break" translatable="false">long_break</string>
+
+<!--    Notification -->
+    <string name="timer_notification">Timer Notification</string>
 
 </resources>

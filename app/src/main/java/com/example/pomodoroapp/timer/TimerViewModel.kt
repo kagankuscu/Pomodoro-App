@@ -102,8 +102,16 @@ class TimerViewModel : ViewModel() {
         _isKeepScreenOn.value = false
     }
 
-    fun setWorkBreak(value: Long) {
+    fun setWorkTime(value: Long) {
         _work.value = value
+    }
+
+    fun vibrationCompleted() {
+        _vibration.value = false
+    }
+
+    fun resetTimerCompleted() {
+        _resetTimerStatus.value = false
     }
 
     fun setShortBreak(value: Long) {

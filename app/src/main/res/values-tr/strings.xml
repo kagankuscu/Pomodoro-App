@@ -30,7 +30,6 @@
         Pomodoro uygulaması sizin odaklamanızı ve üretkenliğinizi arttıracak bir uygulamadır.
         Uygulamanın yapısı çok sade olup kullanımı kolaydır.
     </string>
-
     <string name="version">Versiyon</string>
     <string name="description">Açıklama</string>
     <string name="developer_information">Yazılımcı Bilgileri</string>
@@ -38,5 +37,8 @@
     <string name="contribute">Uygulamayı ilginizi çekiyorsa Github\'ta bulabilirsiniz.</string>
     <string name="btn_view_on_github">Github\'da görüntüle</string>
     <string name="contributeTitle">Katkıda Bulunmak</string>
+
+<!--    Notification -->
+    <string name="timer_notification">Zamanlayıcı Bildirim</string>
 
 </resources>

@@ -54,7 +54,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="@dimen/margin_dev"
                     android:text="1.0"
-                    android:textColor="@color/black_CC"
+                    android:textColor="@color/colorBlack"
                     android:textStyle="normal" />
             </LinearLayout>
 
