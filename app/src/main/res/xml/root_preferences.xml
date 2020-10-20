@@ -2,33 +2,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory android:title="@string/general_settings">
+
         <SwitchPreference
-            android:defaultValue="false"
-            app:key="mode"
-            app:title="@string/dark_mode" />
+            android:defaultValue="true"
+            app:key="@string/key_keep_screen_on"
+            app:title="@string/keep_screen_on" />
+
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/messages_header">
 
-        <EditTextPreference
-            android:inputType="number"
-            app:key="work_time"
+        <ListPreference
+            android:entries="@array/time"
+            android:entryValues="@array/time_values"
+            app:key="@string/key_work_time"
             app:title="@string/work_time"
             app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
-            android:inputType="number"
-            app:key="short_break"
+        <ListPreference
+            android:entries="@array/time"
+            android:entryValues="@array/time_values"
+            app:key="@string/key_short_break"
             app:title="@string/short_time"
             app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
-            android:inputType="number"
-            app:key="long_break"
+        <ListPreference
+            android:entries="@array/time"
+            android:entryValues="@array/time_values"
+            app:key="@string/key_long_break"
             app:title="@string/long_time"
             app:useSimpleSummaryProvider="true" />
 
-
     </PreferenceCategory>
-
 </PreferenceScreen>

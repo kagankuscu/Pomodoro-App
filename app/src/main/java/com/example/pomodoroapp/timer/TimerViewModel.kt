@@ -1,6 +1,5 @@
 package com.example.pomodoroapp.timer
 
-import android.os.Build
 import android.os.CountDownTimer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -21,6 +20,21 @@ class TimerViewModel : ViewModel() {
         private const val MINUTE = 60_000L
 
     }
+
+    private val _work = MutableLiveData<Long>()
+
+    val work: LiveData<Long>
+        get() = _work
+
+    private val _shortBreak = MutableLiveData<Long>()
+
+    val shortBreak: LiveData<Long>
+        get() = _shortBreak
+
+    private val _longBreak = MutableLiveData<Long>()
+
+    val longBreak: LiveData<Long>
+        get() = _longBreak
 
     private var pomodoro = 0
 
@@ -64,6 +78,11 @@ class TimerViewModel : ViewModel() {
 
     private val _vibration = MutableLiveData<Boolean>()
 
+    private val _isKeepScreenOn = MutableLiveData<Boolean>()
+
+    val isKeepScreenOn: LiveData<Boolean>
+        get() = _isKeepScreenOn
+
     val vibration: LiveData<Boolean>
         get() = _vibration
 
@@ -73,6 +92,26 @@ class TimerViewModel : ViewModel() {
         _resetTimerStatus.value = false
 
         _timerString.value = timerZero
+    }
+
+    fun setKeepScreenOn() {
+        _isKeepScreenOn.value = true
+    }
+
+    fun setKeepScreenOff() {
+        _isKeepScreenOn.value = false
+    }
+
+    fun setWorkBreak(value: Long) {
+        _work.value = value
+    }
+
+    fun setShortBreak(value: Long) {
+        _shortBreak.value = value
+    }
+
+    fun setLongBreak(value: Long) {
+        _longBreak.value = value
     }
 
     fun toggleStartAndStop() {
@@ -150,9 +189,11 @@ class TimerViewModel : ViewModel() {
     private fun nextTimer() {
         timerCancel()
 
+        val pomodoroArr = createArray()
+
         if (pomodoro > pomodoroArr.size - 1) pomodoro = 0
 
-        countDownTimer = createTimerObject(pomodoroArr[pomodoro])
+        countDownTimer = createTimerObject(pomodoroArr[pomodoro]!!)
 
         setTimer()
 
@@ -184,12 +225,17 @@ class TimerViewModel : ViewModel() {
         return false
     }
 
-    private fun setVibration() {
-        _vibration.value = true
+    private fun createArray(): Array<Long?> {
+        return arrayOf(
+            _work.value, _shortBreak.value,
+            _work.value, _shortBreak.value,
+            _work.value, _shortBreak.value,
+            _work.value, _longBreak.value
+        )
     }
 
-    fun vibrationCompleted() {
-        _vibration.value = false
+    private fun setVibration() {
+        _vibration.value = true
     }
 
     private fun onPauseTimer() {
@@ -222,10 +268,6 @@ class TimerViewModel : ViewModel() {
 
     private fun resetTimer() {
         _resetTimerStatus.value = true
-    }
-
-    fun resetTimerCompleted() {
-        _resetTimerStatus.value = false
     }
 
     private fun setTimer() {
