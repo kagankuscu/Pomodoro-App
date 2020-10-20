@@ -52,27 +52,21 @@
 
         <Button
             android:id="@+id/btnStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Button.Timer"
             android:background="@drawable/button_selector"
             android:onClick="@{() -> timerViewModel.toggleStartAndStop()}"
-            android:padding="@dimen/padding_btn_8dp"
             android:text="@string/start_btn"
-            android:textSize="24sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/btnSkip"
             app:layout_constraintEnd_toStartOf="@+id/btnSkip"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/btnSkip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Button.Timer"
             android:layout_marginBottom="32dp"
             android:background="@drawable/button_selector"
             android:onClick="@{() -> timerViewModel.onSkipTimer()}"
-            android:padding="@dimen/padding_btn_8dp"
             android:text="@string/skip_btn"
-            android:textSize="24sp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnReset"
@@ -83,14 +77,11 @@
 
         <Button
             android:id="@+id/btnReset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Button.Timer"
             android:background="@drawable/button_selector"
             android:enabled="false"
             android:onClick="@{() -> timerViewModel.onResetTimer()}"
-            android:padding="@dimen/padding_btn_8dp"
             android:text="@string/reset_btn"
-            android:textSize="24sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/btnSkip"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

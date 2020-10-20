@@ -33,7 +33,7 @@
         <item name="android:fontFamily">@font/dancing_script_bold</item>
     </style>
 
-    <style name="About">
+    <style name="Base.About" parent="">
         <item name="fontFamily">@font/raleway</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -44,28 +44,44 @@
         <item name="android:layout_marginBottom">@dimen/margin_bottom</item>
     </style>
 
-    <style name="HeadLine3" parent="About">
+    <style name="About.TextView.HeadLine3" parent="Base.About">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline3
         </item>
         <item name="android:textColor">@color/colorBlack</item>
     </style>
 
-    <style name="HeadLine5" parent="About">
+    <style name="About.TextView.HeadLine5" parent="Base.About">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline5
         </item>
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="HeadLine6" parent="About">
+    <style name="About.TextView.HeadLine6" parent="Base.About">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline6
         </item>
         <item name="android:textColor">@color/colorBlack</item>
     </style>
 
-    <style name="SubTitle1" parent="About">
+    <style name="About.TextView.SubTitle1" parent="Base.About">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1
         </item>
+    </style>
+
+    <style name="Base.Button" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:padding">@dimen/padding_btn_8dp</item>
+    </style>
+
+    <style name="Button.Timer" parent="Base.Button">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="Button.About" parent="Button.Timer">
+        <item name="android:textSize">12sp</item>
+        <item name="android:padding">@dimen/padding_btn_8dp</item>
     </style>
 
 </resources>
