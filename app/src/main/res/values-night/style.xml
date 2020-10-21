@@ -16,7 +16,7 @@
     <style name="About.TextView.HeadLine5" parent="Base.About">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline5
         </item>
-        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorGrey</item>
         <item name="android:textStyle">bold</item>
     </style>
 
